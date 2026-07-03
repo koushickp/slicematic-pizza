@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PizzaFlow — SliceMatic PRD + Business Unit Economics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #1a1a2e;
+    background: #fff;
+  }
+
+  /* ── Cover Page ── */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    color: white;
+    padding: 60px;
+    page-break-after: always;
+  }
+  .cover .badge {
+    background: #e94560;
+    color: white;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+  }
+  .cover h1 {
+    font-size: 38pt;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+  }
+  .cover h1 span { color: #e94560; }
+  .cover .sub {
+    font-size: 16pt;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 50px;
+  }
+  .cover .divider {
+    width: 60px;
+    height: 3px;
+    background: #e94560;
+    margin: 0 auto 40px;
+  }
+  .cover .meta {
+    font-size: 10pt;
+    opacity: 0.7;
+    line-height: 2;
+  }
+  .cover .stats {
+    display: flex;
+    gap: 50px;
+    margin: 50px 0;
+    justify-content: center;
+  }
+  .cover .stat { text-align: center; }
+  .cover .stat .num {
+    font-size: 28pt;
+    font-weight: 700;
+    color: #e94560;
+  }
+  .cover .stat .label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  /* ── Page Layout ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 50px 60px;
+  }
+
+  /* ── Part Headers ── */
+  .part-header {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    color: white;
+    padding: 30px 40px;
+    margin: 0 -60px 40px;
+    page-break-before: always;
+  }
+  .part-header .part-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #e94560;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .part-header h2 {
+    font-size: 22pt;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .part-header p {
+    font-size: 10pt;
+    opacity: 0.7;
+  }
+
+  /* ── Section Headings ── */
+  h2.section {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #0f3460;
+    border-left: 4px solid #e94560;
+    padding-left: 14px;
+    margin: 36px 0 14px;
+    page-break-after: avoid;
+  }
+  h3.subsection {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 22px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e8e8f0;
+    page-break-after: avoid;
+  }
+  h4.fr-label {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #e94560;
+    margin: 16px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Paragraphs & Lists ── */
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+  ol li { padding-left: 4px; }
+
+  /* ── Highlight Boxes ── */
+  .highlight-box {
+    background: #f0f4ff;
+    border-left: 4px solid #0f3460;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 16px 0;
+    font-size: 9.5pt;
+  }
+  .highlight-box.red {
+    background: #fff0f3;
+    border-left-color: #e94560;
+  }
+  .highlight-box.green {
+    background: #f0fff4;
+    border-left-color: #27ae60;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 9pt;
+    page-break-inside: avoid;
+  }
+  th {
+    background: #1a1a2e;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+    letter-spacing: 0.3px;
+  }
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #e8e8f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f8f9ff; }
+  tr:last-child td { font-weight: 600; background: #eef0ff; }
+  .td-highlight { font-weight: 700; color: #e94560; }
+
+  /* ── User Stories ── */
+  .story-group {
+    background: #fafbff;
+    border: 1px solid #e8e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    page-break-inside: avoid;
+  }
+  .story-group h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0f3460;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e4f0;
+  }
+  .story {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-size: 9pt;
+    line-height: 1.5;
+  }
+  .story-num {
+    min-width: 22px;
+    font-weight: 700;
+    color: #e94560;
+  }
+
+  /* ── FR Cards ── */
+  .fr-card {
+    border: 1px solid #e0e4f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    page-break-inside: avoid;
+  }
+  .fr-card .fr-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #0f3460;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fr-card .fr-tag {
+    background: #e94560;
+    color: white;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+  }
+  .fr-card ul { margin-bottom: 0; }
+
+  /* ── Flowchart ── */
+  .flowchart-container {
+    background: #f8f9ff;
+    border: 1px solid #e0e4f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    text-align: center;
+    page-break-inside: avoid;
+  }
+  .flowchart-container img, .flowchart-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── Module Cards ── */
+  .module-card {
+    border: 1px solid #e0e4f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    page-break-inside: avoid;
+    border-left: 4px solid #0f3460;
+  }
+  .module-card strong { color: #0f3460; }
+
+  /* ── Key Metrics ── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .metric-card {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .metric-card .mval {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #e94560;
+    line-height: 1.2;
+  }
+  .metric-card .mlabel {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+
+  /* ── Sensitivity Q&A ── */
+  .qa-block {
+    border: 1px solid #e0e4f0;
+    border-radius: 8px;
+    margin: 10px 0;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .qa-block .qa-q {
+    background: #f0f4ff;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #0f3460;
+    border-bottom: 1px solid #e0e4f0;
+  }
+  .qa-block .qa-a {
+    padding: 10px 16px;
+    font-size: 9pt;
+    line-height: 1.6;
+  }
+  .qa-block .qa-a strong { color: #e94560; }
+
+  /* ── Sample Bill ── */
+  .bill-box {
+    background: #1a1a2e;
+    color: white;
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    margin: 16px 0;
+    max-width: 360px;
+    page-break-inside: avoid;
+  }
+  .bill-box .bill-header {
+    text-align: center;
+    font-weight: 700;
+    font-size: 11pt;
+    color: #e94560;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #444;
+  }
+  .bill-box .bill-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    color: #ccc;
+  }
+  .bill-box .bill-row.total {
+    border-top: 1px dashed #444;
+    margin-top: 10px;
+    padding-top: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  .bill-box .bill-row.discount { color: #27ae60; }
+  .bill-box .bill-row.gst { color: #f39c12; }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block;
+    background: #eef0ff;
+    color: #0f3460;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px;
+  }
+  .tag.red { background: #fff0f3; color: #e94560; }
+  .tag.green { background: #f0fff4; color: #27ae60; }
+
+  /* ── Footer ── */
+  .page-footer {
+    text-align: center;
+    font-size: 8pt;
+    color: #888;
+    padding: 20px 0 10px;
+    border-top: 1px solid #e8e8f0;
+    margin-top: 40px;
+  }
+
+  /* ── Print Styles ── */
+  @media print {
+    body { font-size: 9pt; }
+    .cover { min-height: 100vh; }
+    .part-header { page-break-before: always; }
+    h2.section { page-break-after: avoid; }
+    h3.subsection { page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+    .fr-card { page-break-inside: avoid; }
+    .story-group { page-break-inside: avoid; }
+    .qa-block { page-break-inside: avoid; }
+    .flowchart-container { page-break-inside: avoid; }
+    @page { margin: 15mm 18mm; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ COVER ═══ -->
+<div class="cover">
+  <div class="badge">FDE Academy · Cohort 1 · Stage 1</div>
+  <h1>Pizza<span>Flow</span></h1>
+  <div class="sub">SliceMatic Digital Ordering System</div>
+  <div class="divider"></div>
+
+  <div class="stats">
+    <div class="stat"><div class="num">Rs.847</div><div class="label">Avg Order Value</div></div>
+    <div class="stat"><div class="num">Rs.2.1L</div><div class="label">Monthly Revenue</div></div>
+    <div class="stat"><div class="num">38.4%</div><div class="label">Gross Margin</div></div>
+    <div class="stat"><div class="num">11</div><div class="label">Daily Break-Even</div></div>
+  </div>
+
+  <div class="meta">
+    Product Requirements Document + Business Unit Economics<br>
+    Submitted: June 25, 2025 &nbsp;·&nbsp; Team: Group 10<br>
+    3 Stages &nbsp;·&nbsp; 100 Points &nbsp;·&nbsp; Due July 2, 2025
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ PART A ═══ -->
+<div class="page">
+<div class="part-header">
+  <div class="part-label">Part A</div>
+  <h2>Product Requirements Document</h2>
+  <p>Full specification — functional requirements, user stories, user flow, implementation decisions, testing strategy</p>
+</div>
+
+<!-- Problem Statement -->
+<h2 class="section">Problem Statement</h2>
+<p>SliceMatic is a single-outlet pizza delivery brand in New Ashok Nagar, Delhi that currently takes all customer orders over the phone. This process is error-prone: staff mishear toppings, miscalculate prices, forget to apply discounts, and manually compute GST. There is no structured record of orders, so the owner has no data to analyse demand patterns, identify top-selling items, or calculate daily revenue accurately.</p>
+<p>Customers experience wait times, hold music, and uncertainty about their order total before it arrives. The outlet cannot scale beyond what two people on the phone can handle.</p>
+
+<div class="highlight-box red">
+  <strong>Key Pain Points:</strong> ~15% order errors from phone miscommunication · No order history for business analysis · Manual GST calculation · Single-channel bottleneck at peak hours
+</div>
+
+<!-- Solution -->
+<h2 class="section">Solution</h2>
+<p>A digital self-service ordering system that guides customers step-by-step through selecting a pizza base, pizza type, and topping from a menu loaded dynamically from external data files — then calculates pricing, applies quantity discounts, adds GST, collects a payment mode selection, and persists every completed order to a structured log file.</p>
+<p>The system eliminates phone-order errors, gives customers a transparent itemised bill before they commit, and produces a machine-readable order history the owner can query for business analysis. Delivered as a Gradio MVP in Stage 2, rebuilt as a full-stack web app with Supabase and an AI feature in Stage 3.</p>
+
+<div class="highlight-box green">
+  <strong>Core Value:</strong> Validated digital intake · Auto-calculated pricing + GST + discounts · Append-only order log for BI · File-driven menu (no hardcoding) · 0 unhandled exceptions
+</div>
+
+<!-- Product Vision -->
+<h2 class="section">Product Vision</h2>
+<p>SliceMatic's digital ordering system replaces phone-based order intake with a structured, self-service application for urban millennials and Gen Z customers (18–35 years) within a 5 km radius of New Ashok Nagar, Delhi. The system eliminates order errors caused by miscommunication, reduces counter staff workload, and produces a structured order history that drives operational decisions. Every completed order is persisted for business analysis, giving the outlet the data foundation it currently lacks entirely.</p>
+
+<!-- User Stories -->
+<h2 class="section">User Stories</h2>
+
+<div class="story-group">
+  <h4>Customer — Ordering Flow</h4>
+  <div class="story"><span class="story-num">1.</span><span>As a customer, I want to start a new ordering session at any time, so that I can place an order without waiting for a staff member to be free.</span></div>
+  <div class="story"><span class="story-num">2.</span><span>As a customer, I want to enter my name and be told immediately if the format is wrong, so that I don't discover an error only after completing my full order.</span></div>
+  <div class="story"><span class="story-num">3.</span><span>As a customer, I want to enter my phone number and receive a specific error if it is invalid, so that I know exactly what format is expected.</span></div>
+  <div class="story"><span class="story-num">4.</span><span>As a customer, I want to see a numbered list of available pizza bases with their prices, so that I can make an informed choice without having to ask staff.</span></div>
+  <div class="story"><span class="story-num">5.</span><span>As a customer, I want to see a numbered list of available pizza types with their prices, so that I can browse the full menu at my own pace.</span></div>
+  <div class="story"><span class="story-num">6.</span><span>As a customer, I want to see a numbered list of available toppings with their prices, so that I can customise my order precisely.</span></div>
+  <div class="story"><span class="story-num">7.</span><span>As a customer, I want to select items by entering a number, so that the interaction is simple and unambiguous.</span></div>
+  <div class="story"><span class="story-num">8.</span><span>As a customer, I want to enter the quantity of pizzas I want (1–10), so that I can order for a group in a single session.</span></div>
+  <div class="story"><span class="story-num">9.</span><span>As a customer, I want to be told immediately if I enter an invalid quantity (e.g. 0, 11, or "three"), so that I can correct the mistake without restarting.</span></div>
+  <div class="story"><span class="story-num">10.</span><span>As a customer, I want to receive a 10% discount automatically when I order 5 or more pizzas, so that group orders are rewarded without me having to ask.</span></div>
+  <div class="story"><span class="story-num">11.</span><span>As a customer, I want to see the discount displayed as a separate line on the bill, so that I can confirm it has been applied.</span></div>
+  <div class="story"><span class="story-num">12.</span><span>As a customer, I want to see an itemised bill that breaks down base price, pizza price, topping price, quantity, subtotal, discount, GST, and total payable.</span></div>
+  <div class="story"><span class="story-num">13.</span><span>As a customer, I want the bill to clearly show the GST amount as a separate line, so that I know how much tax I am paying.</span></div>
+  <div class="story"><span class="story-num">14.</span><span>As a customer, I want to choose from Cash, Card, or UPI as payment modes, so that I can pay in the way that suits me.</span></div>
+  <div class="story"><span class="story-num">15.</span><span>As a customer, I want to receive a payment confirmation message specific to my chosen mode, so that I know what to do next.</span></div>
+  <div class="story"><span class="story-num">16.</span><span>As a customer, I want to receive a final order confirmation, so that I am confident my order has been recorded.</span></div>
+  <div class="story"><span class="story-num">17.</span><span>As a customer, I want error messages to be specific and actionable, so that I know exactly how to fix my input.</span></div>
+  <div class="story"><span class="story-num">18.</span><span>As a customer, I want the system to never crash regardless of what I type, so that I can always complete my order gracefully.</span></div>
+</div>
+
+<div class="story-group">
+  <h4>Customer — Menu Accuracy</h4>
+  <div class="story"><span class="story-num">19.</span><span>As a customer, I want the menu to reflect current prices loaded from the outlet's data files, so that I am never quoted a wrong price.</span></div>
+  <div class="story"><span class="story-num">20.</span><span>As a customer, I want GST applied on the post-discount total (not the undiscounted amount), so that my discount is reflected correctly in the final price.</span></div>
+</div>
+
+<div class="story-group">
+  <h4>Owner / Admin</h4>
+  <div class="story"><span class="story-num">21.</span><span>As the outlet owner, I want every completed order saved automatically to a log file, so that I have a complete record without relying on staff.</span></div>
+  <div class="story"><span class="story-num">22.</span><span>As the outlet owner, I want each order log entry to include timestamp, customer name, phone, items, unit prices, quantity, subtotal, discount, GST, total, and payment mode.</span></div>
+  <div class="story"><span class="story-num">23.</span><span>As the outlet owner, I want the log file to use a consistent, parseable format, so that I can write scripts to analyse order history.</span></div>
+  <div class="story"><span class="story-num">24.</span><span>As the outlet owner, I want new orders appended (not overwrite), so that historical data is never lost.</span></div>
+  <div class="story"><span class="story-num">25.</span><span>As the outlet owner, I want the menu to update instantly when I replace the data files, without a code deployment.</span></div>
+  <div class="story"><span class="story-num">26.</span><span>As the outlet owner, I want malformed menu lines handled gracefully, so that one bad entry does not take the system offline.</span></div>
+  <div class="story"><span class="story-num">27.</span><span>As the outlet owner, I want a clear error message if a menu file is missing, so that I know which file to restore.</span></div>
+</div>
+
+<div class="story-group">
+  <h4>Developer / Operator</h4>
+  <div class="story"><span class="story-num">28.</span><span>As a developer, I want menu data loaded from external files at startup (not hardcoded), so that the grader can swap the files and the system continues to work correctly.</span></div>
+  <div class="story"><span class="story-num">29.</span><span>As a developer, I want input validation to cover all 8 specified edge cases, so that no unhandled exception can be triggered by any user input.</span></div>
+  <div class="story"><span class="story-num">30.</span><span>As a developer, I want all pricing logic defined in one place (constants), so that business rule changes require editing a single value.</span></div>
+  <div class="story"><span class="story-num">31.</span><span>As a developer, I want each module (file loader, validator, pricing engine, bill formatter, order logger) to have a single responsibility, so that I can test and modify each in isolation.</span></div>
+  <div class="story"><span class="story-num">32.</span><span>As a developer, I want the Gradio UI to present the ordering flow as a sequence of steps, so that state is managed cleanly and users cannot skip steps.</span></div>
+  <div class="story"><span class="story-num">33.</span><span>As a developer, I want the bill rendered in a gr.Dataframe or gr.HTML component, so that it is formatted correctly and not displayed as plain text.</span></div>
+</div>
+
+<!-- Functional Requirements -->
+<h2 class="section">Functional Requirements</h2>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-01</span> Customer Onboarding</div>
+  <ul>
+    <li>Collect customer full name: alphabets and spaces only, minimum 2 characters, maximum 40 characters (after stripping whitespace)</li>
+    <li>Collect phone number: exactly 10 digits, must begin with 6, 7, 8, or 9 (Indian mobile format)</li>
+    <li>On any validation failure: display a specific, human-readable error message and re-prompt. Do not crash or proceed</li>
+    <li>Log a session timestamp (ISO 8601) at the start of each new ordering session</li>
+  </ul>
+</div>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-02</span> Pizza Quantity Selection</div>
+  <ul>
+    <li>Accept integers from 1 to 10 inclusive. Reject floats, strings, zero, negatives, and values &gt; 10</li>
+    <li>Apply 10% discount automatically when quantity &gt;= 5. Show discount as a separate bill line item</li>
+    <li>Display a clear message when the discount is applied</li>
+  </ul>
+</div>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-03</span> Menu Display &amp; Selection — Loaded from Files</div>
+  <ul>
+    <li>Load <code>Types_of_Base.txt</code>, <code>Types_of_Pizza.txt</code>, <code>Types_of_Toppings.txt</code> at startup</li>
+    <li>Format: <code>ID;Name;Price(INR)</code> — one item per line</li>
+    <li>Display each category as a numbered list with names and prices in INR</li>
+    <li>Accept selection by item number only. Reject out-of-range, non-integer, and empty input</li>
+    <li>Each order requires exactly one base, one pizza type, and one topping</li>
+    <li>If a file is missing or all lines malformed: display a clear error and exit gracefully</li>
+  </ul>
+</div>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-04</span> Pricing Engine</div>
+  <ul>
+    <li>Unit price = Base price + Pizza price + Topping price</li>
+    <li>Subtotal = Unit price × Quantity</li>
+    <li>If quantity &gt;= 5: post-discount subtotal = subtotal × 0.90</li>
+    <li>GST = 18% applied on the post-discount subtotal (not per item)</li>
+    <li>Total payable = post-discount subtotal + GST</li>
+    <li>All prices in INR with Rs. symbol, rounded to 2 decimal places</li>
+  </ul>
+</div>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-05</span> Order Summary &amp; Bill Display</div>
+  <ul>
+    <li>Itemised bill: Base, Pizza, Topping (name + unit price), quantity, subtotal, discount (if applicable), post-discount subtotal, GST @ 18%, Total Payable</li>
+    <li>Aligned columns, consistent Rs. symbols, clearly marked totals</li>
+    <li>Rendered in <code>gr.Dataframe</code> or <code>gr.HTML</code> — not plain text</li>
+  </ul>
+</div>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-06</span> Payment Flow</div>
+  <ul>
+    <li>Offer exactly 3 modes: 1. Cash &nbsp; 2. Card &nbsp; 3. UPI</li>
+    <li>Reject invalid selections with a re-prompt</li>
+    <li>Confirmation messages: Cash → "Pay Rs.X in cash to rider" · Card → "Your card will be charged Rs.X" · UPI → "Complete UPI payment of Rs.X to SliceMatic@upi"</li>
+  </ul>
+</div>
+
+<div class="fr-card">
+  <div class="fr-title"><span class="fr-tag">FR-07</span> Order Persistence</div>
+  <ul>
+    <li>Append every completed order to <code>orders_log.txt</code> immediately after payment confirmation</li>
+    <li>Never overwrite — append-only</li>
+    <li>Each record: timestamp · customer name · phone · base (ID+name+price) · pizza · topping · unit price · quantity · subtotal · discount · GST · total · payment mode</li>
+    <li>Format: one order per block, pipe-separated fields, blank line between orders</li>
+    <li>Example: <code>TIMESTAMP|2025-06-25T14:30:00|NAME|Rajan Sharma|PHONE|9876543210|BASE|B3;Cheese Burst;229|PIZZA|P7;BBQ Chicken;379|...</code></li>
+  </ul>
+</div>
+
+<!-- Non-Functional Requirements -->
+<h2 class="section">Non-Functional Requirements</h2>
+
+<h3 class="subsection">NFR-01: Input Validation Rules</h3>
+<table>
+  <tr><th>Input</th><th>Rule</th><th>Error Message</th></tr>
+  <tr><td>Customer name</td><td>Alphabets + spaces only, 2–40 chars</td><td>"Name must contain only letters and spaces, between 2 and 40 characters."</td></tr>
+  <tr><td>Phone number</td><td>Exactly 10 digits, starts with 6/7/8/9</td><td>"Phone number must be exactly 10 digits and start with 6, 7, 8, or 9."</td></tr>
+  <tr><td>Quantity</td><td>Integer 1–10 inclusive</td><td>"Please enter a whole number between 1 and 10."</td></tr>
+  <tr><td>Menu selection</td><td>Integer within displayed range</td><td>"Please enter a number between 1 and [N]."</td></tr>
+  <tr><td>Payment mode</td><td>1, 2, or 3 only</td><td>"Please enter 1 for Cash, 2 for Card, or 3 for UPI."</td></tr>
+</table>
+
+<h3 class="subsection">NFR-02: Edge Cases — All Must Be Handled Without Exception</h3>
+<table>
+  <tr><th>#</th><th>Edge Case</th><th>Behaviour</th></tr>
+  <tr><td>1</td><td>Name with only spaces</td><td>Strip whitespace → fail length check → specific error</td></tr>
+  <tr><td>2</td><td>Phone with 10 digits starting with 1</td><td>Reject with specific format error</td></tr>
+  <tr><td>3</td><td>Quantity = 0</td><td>Reject: "Quantity must be at least 1."</td></tr>
+  <tr><td>4</td><td>Quantity = 11</td><td>Reject: "Maximum order size is 10 pizzas per order."</td></tr>
+  <tr><td>5</td><td>Entering a price number instead of item number</td><td>Reject as out-of-range</td></tr>
+  <tr><td>6</td><td>Empty input at every prompt</td><td>Reject: "Input cannot be empty."</td></tr>
+  <tr><td>7</td><td>Non-integer at quantity prompt (e.g. "three" or "2.5")</td><td>Reject with specific error</td></tr>
+  <tr><td>8</td><td>Menu file with missing price field</td><td>Skip malformed line, load valid lines; if none remain, exit gracefully</td></tr>
+</table>
+
+<h3 class="subsection">NFR-03: File Loading</h3>
+<ul>
+  <li>Parse defensively: strip leading/trailing whitespace per field</li>
+  <li>Split on <code>;</code> — expect exactly 3 fields per line</li>
+  <li>Validate third field (price) is numeric. Skip any line that fails</li>
+  <li>If file is empty or all lines malformed: <em>"Error: [filename] contains no valid menu items."</em></li>
+</ul>
+
+<h3 class="subsection">NFR-04 &amp; NFR-05: Log Format + Graceful Failure</h3>
+<ul>
+  <li><code>orders_log.txt</code> — UTF-8, append-only, pipe-separated key-value blocks</li>
+  <li>Missing menu file → specific named error + clean exit</li>
+  <li>Malformed line → skip line, continue loading valid items</li>
+  <li>Log write failure → display error, do not crash</li>
+  <li>All unhandled exceptions caught at top level, displayed as user-friendly messages</li>
+</ul>
+
+<!-- User Flow Diagram -->
+<h2 class="section">User Flow Diagram</h2>
+<div class="flowchart-container" id="flowchart-placeholder">
+  <!-- SVG will be injected here by the Python script -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="720" height="1480" viewBox="0 0 720 1480">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#555"/>
+    </marker>
+    <marker id="arr-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#e94560"/>
+    </marker>
+  </defs>
+  <rect width="720" height="1480" fill="#fafbff"/>
+  <line x1="275" y1="54" x2="275" y2="72" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="106" x2="275" y2="120" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="144" x2="440" y2="144" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="168" x2="275" y2="186" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="220" x2="275" y2="234" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="268" x2="275" y2="278" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="302" x2="440" y2="302" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,302 656,302 656,251 390,251" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="326" x2="275" y2="344" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="378" x2="275" y2="388" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="412" x2="440" y2="412" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,412 656,412 656,361 390,361" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="436" x2="275" y2="454" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="488" x2="275" y2="498" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="522" x2="440" y2="522" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,522 656,522 656,471 390,471" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="546" x2="275" y2="564" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="598" x2="275" y2="608" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="632" x2="440" y2="632" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,632 656,632 656,581 390,581" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="656" x2="275" y2="674" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="708" x2="275" y2="718" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="742" x2="440" y2="742" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,742 656,742 656,691 390,691" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="766" x2="275" y2="784" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="818" x2="275" y2="828" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="852" x2="440" y2="852" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,852 656,852 656,801 390,801" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="876" x2="275" y2="894" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="928" x2="275" y2="938" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="962" x2="440" y2="962" stroke="#27ae60" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="535,976 535,1021 390,1021" fill="none" stroke="#27ae60" stroke-width="1" marker-end="url(#arr)"/><line x1="275" y1="986" x2="275" y2="1004" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="1038" x2="275" y2="1052" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="1086" x2="275" y2="1100" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="1134" x2="275" y2="1144" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="1168" x2="440" y2="1168" stroke="#e94560" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="638,1168 656,1168 656,1117 390,1117" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-red)"/><line x1="275" y1="1192" x2="275" y2="1210" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="1244" x2="275" y2="1258" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="1292" x2="275" y2="1302" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="375" y1="1326" x2="440" y2="1326" stroke="#e67e22" stroke-width="1.2" marker-end="url(#arr)"/><polyline points="535,1340 535,1385 390,1385" fill="none" stroke="#e67e22" stroke-width="1" marker-end="url(#arr)"/><line x1="275" y1="1350" x2="275" y2="1368" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/><line x1="275" y1="1402" x2="275" y2="1420" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+  <ellipse cx="275" cy="37" rx="70" ry="17" fill="#2c3e50" stroke="#ccc" stroke-width="0.5"/><text x="275" y="37" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="10" font-weight="bold" font-family="Arial, sans-serif">START</text><rect x="160" y="72" width="230" height="34" rx="5" fill="#1a1a2e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="89.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Load menu files at startup</text><polygon points="275,120 375,144 275,168 175,144" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="144.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Files valid?</text><rect x="440" y="130" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="144.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Display error + EXIT</text><text x="405" y="138" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="174" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="186" width="230" height="34" rx="5" fill="#1a1a2e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="203.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display welcome screen</text><rect x="160" y="234" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="251.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Collect customer name</text><polygon points="275,278 375,302 275,326 175,302" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="297.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Name valid?</text><text x="275" y="307.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">(alpha, 2–40 chars)</text><rect x="440" y="288" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="302.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="297" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="332" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="344" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="361.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Collect phone number</text><polygon points="275,388 375,412 275,436 175,412" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="407.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Phone valid?</text><text x="275" y="417.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">(10 digits, starts 6–9)</text><rect x="440" y="398" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="412.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="407" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="442" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="454" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="471.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Collect pizza quantity</text><polygon points="275,498 375,522 275,546 175,522" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="517.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Quantity valid?</text><text x="275" y="527.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">(integer 1–10)</text><rect x="440" y="508" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="522.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="517" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="552" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="564" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="581.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display bases → Select base</text><polygon points="275,608 375,632 275,656 175,632" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="627.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Selection valid?</text><text x="275" y="637.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">(in-range integer)</text><rect x="440" y="618" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="632.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="627" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="662" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="674" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="691.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display pizzas → Select pizza</text><polygon points="275,718 375,742 275,766 175,742" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="742.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Selection valid?</text><rect x="440" y="728" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="742.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="737" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="772" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="784" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="801.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display toppings → Select topping</text><polygon points="275,828 375,852 275,876 175,852" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="852.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Selection valid?</text><rect x="440" y="838" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="852.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="847" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="882" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="894" width="230" height="34" rx="5" fill="#1a1a2e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="906.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Calculate pricing</text><text x="275" y="916.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Unit = Base + Pizza + Topping</text><polygon points="275,938 375,962 275,986 175,962" fill="#8e44ad" stroke="#ccc" stroke-width="0.5"/><text x="275" y="962.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Quantity >= 5?</text><rect x="440" y="948" width="190" height="28" rx="5" fill="#27ae60" stroke="#ccc" stroke-width="0.5"/><text x="535" y="962.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Apply 10% discount</text><text x="403" y="956" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><text x="269" y="992" text-anchor="middle" fill="#888" font-size="7.5" font-family="Arial">NO</text><rect x="160" y="1004" width="230" height="34" rx="5" fill="#1a1a2e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1021.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">GST = Post-discount × 18%</text><rect x="160" y="1052" width="230" height="34" rx="5" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1069.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display itemised bill</text><rect x="160" y="1100" width="230" height="34" rx="5" fill="#16213e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1117.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Offer: 1=Cash  2=Card  3=UPI</text><polygon points="275,1144 375,1168 275,1192 175,1168" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1163.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Payment valid?</text><text x="275" y="1173.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">(1, 2, or 3)</text><rect x="440" y="1154" width="190" height="28" rx="5" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="535" y="1168.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Show error → re-prompt</text><text x="405" y="1163" text-anchor="middle" fill="#e94560" font-size="7.5" font-family="Arial">NO</text><text x="269" y="1198" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="1210" width="230" height="34" rx="5" fill="#1a1a2e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1227.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display payment confirmation</text><rect x="160" y="1258" width="230" height="34" rx="5" fill="#1a1a2e" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1275.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Append order to orders_log.txt</text><polygon points="275,1302 375,1326 275,1350 175,1326" fill="#0f3460" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1321.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">Write</text><text x="275" y="1331.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="8" font-family="Arial, sans-serif">success?</text><rect x="440" y="1312" width="190" height="28" rx="5" fill="#e67e22" stroke="#ccc" stroke-width="0.5"/><text x="535" y="1326.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="7.5" font-family="Arial, sans-serif">Display error (do not crash)</text><text x="403" y="1320" text-anchor="middle" fill="#e67e22" font-size="7.5" font-family="Arial">NO</text><text x="267" y="1356" text-anchor="middle" fill="#27ae60" font-size="7.5" font-family="Arial">YES</text><rect x="160" y="1368" width="230" height="34" rx="5" fill="#27ae60" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1385.0" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="9" font-family="Arial, sans-serif">Display order confirmation</text><ellipse cx="275" cy="1437" rx="70" ry="17" fill="#e94560" stroke="#ccc" stroke-width="0.5"/><text x="275" y="1437" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="10" font-weight="bold" font-family="Arial, sans-serif">END</text>
+</svg>
+</div>
+
+<!-- Implementation Decisions -->
+<h2 class="section">Implementation Decisions</h2>
+
+<h3 class="subsection">System Modules</h3>
+
+<div class="module-card">
+  <strong>1. Menu Loader</strong><br>
+  Reads a <code>.txt</code> file, parses lines in <code>ID;Name;Price</code> format, validates each field, returns a list of menu items. Skips malformed lines with a warning. Raises a descriptive exception if the file is missing or yields zero valid items.
+</div>
+
+<div class="module-card">
+  <strong>2. Input Validator</strong><br>
+  Stateless functions for each input type: name, phone, quantity, menu selection, payment mode. Each returns either a validated value or a specific human-readable error string. No exceptions raised — callers receive a result/error pair.
+</div>
+
+<div class="module-card">
+  <strong>3. Pricing Engine</strong><br>
+  Pure function: takes base price, pizza price, topping price, and quantity → returns unit price, subtotal, discount amount, post-discount subtotal, GST amount, and total payable. No I/O. No state. Fully deterministic.
+</div>
+
+<div class="module-card">
+  <strong>4. Bill Formatter</strong><br>
+  Takes Pricing Engine output + selected item names → produces structured bill rows for <code>gr.Dataframe</code> or HTML table. Performs no calculation — formatting only.
+</div>
+
+<div class="module-card">
+  <strong>5. Order Logger</strong><br>
+  Takes a completed order object → appends to <code>orders_log.txt</code> in pipe-separated key-value format. Catches and surfaces write errors without crashing.
+</div>
+
+<h3 class="subsection">Architectural Decisions</h3>
+<ul>
+  <li><strong>No hardcoded menu items.</strong> All menu data flows through the Menu Loader. Grader file swapping produces identical behaviour.</li>
+  <li><strong>Business rules as named constants.</strong> <code>DISCOUNT_THRESHOLD = 5</code>, <code>DISCOUNT_RATE = 0.10</code>, <code>GST_RATE = 0.18</code>, <code>PAYMENT_MODES = {1: "Cash", 2: "Card", 3: "UPI"}</code>.</li>
+  <li><strong>GST on post-discount subtotal.</strong> Order: subtotal → discount → GST → total. Never per item.</li>
+  <li><strong>Gradio state machine.</strong> <code>gr.Blocks</code> + <code>gr.State</code>. Each step gated — next field only revealed after previous validates.</li>
+  <li><strong>Stage 3 Supabase schema.</strong> Three tables: <code>menu_items</code>, <code>orders</code>, <code>order_line_items</code>. Menu loaded from DB, not files.</li>
+</ul>
+
+<h3 class="subsection">Stage 3 API Contracts</h3>
+<table>
+  <tr><th>Endpoint</th><th>Method</th><th>Description</th></tr>
+  <tr><td><code>/api/orders</code></td><td>POST</td><td>Accept order payload, write to Supabase, return order ID</td></tr>
+  <tr><td><code>/api/menu</code></td><td>GET</td><td>Return all menu items grouped by category</td></tr>
+  <tr><td><code>/api/admin/orders</code></td><td>GET</td><td>Authenticated; filters by date + payment mode; returns paginated list with revenue summary</td></tr>
+  <tr><td><code>/api/admin/orders/export</code></td><td>GET</td><td>Returns orders as CSV stream</td></tr>
+</table>
+
+<!-- Testing Decisions -->
+<h2 class="section">Testing Decisions</h2>
+
+<div class="highlight-box">
+  <strong>What makes a good test:</strong> Exercises external behaviour through the public interface only. Does not assert on internal data structures or implementation details. Runnable without a live Gradio server — use in-memory fixtures or temp files.
+</div>
+
+<table>
+  <tr><th>Module</th><th>Test Approach</th></tr>
+  <tr><td>Menu Loader</td><td>Unit tests with temp files: valid, missing, malformed lines, all-malformed, extra whitespace</td></tr>
+  <tr><td>Input Validator</td><td>Unit tests for each validator: valid inputs, boundary values, all 8 edge cases</td></tr>
+  <tr><td>Pricing Engine</td><td>1-pizza (no discount), 5-pizza (10% discount), boundary qty=4 vs qty=5, GST on post-discount</td></tr>
+  <tr><td>Order Logger</td><td>Integration test: write order, read back file, assert all fields present and parseable</td></tr>
+  <tr><td>Bill Formatter</td><td>Assert output rows contain correct field labels and values for a known pricing breakdown</td></tr>
+</table>
+
+<p><strong>Explicitly out of scope for testing:</strong> Gradio UI wiring (manual testing via running app) · File system path resolution · Payment gateway (not in Stage 2)</p>
+
+<!-- Out of Scope / Drawbacks -->
+<h2 class="section">Drawbacks Analysis &amp; Out of Scope</h2>
+
+<table>
+  <tr><th>Limitation</th><th>Impact</th><th>Resolved In</th></tr>
+  <tr><td>Flat-file log (orders_log.txt)</td><td>No indexing. Sequential reads at 1,000+ orders. No concurrent write protection.</td><td>Stage 3 (Supabase)</td></tr>
+  <tr><td>Single-session only</td><td>No concurrent orders from multiple customers. Incompatible with multi-channel operations.</td><td>Stage 3 (API)</td></tr>
+  <tr><td>No inventory management</td><td>Customer can order unavailable items. No stock depletion tracking.</td><td>Future</td></tr>
+  <tr><td>No real payment processing</td><td>Payment mode is confirmatory only. No gateway, no transaction verification.</td><td>Future</td></tr>
+  <tr><td>No order modification/cancellation</td><td>Once submitted, order cannot be changed within system.</td><td>Future</td></tr>
+  <tr><td>Hardcoded business logic</td><td>Discount threshold, GST rate require code change to modify.</td><td>Stage 3 (DB config)</td></tr>
+  <tr><td>No admin interface</td><td>Owner cannot view reports or update menu without editing files directly.</td><td>Stage 3 (Dashboard)</td></tr>
+  <tr><td>No authentication</td><td>No role separation between customer and admin.</td><td>Stage 3 (Supabase Auth)</td></tr>
+</table>
+
+<!-- Cost vs Value -->
+<h2 class="section">Cost vs Value Analysis</h2>
+
+<h3 class="subsection">Build Effort</h3>
+<table>
+  <tr><th>Phase</th><th>Deliverable</th><th>Est. Hours</th></tr>
+  <tr><td>Stage 1</td><td>PRD + Business Economics</td><td>8 hrs</td></tr>
+  <tr><td>Stage 2</td><td>Gradio MVP (validation, pricing, logging)</td><td>16 hrs</td></tr>
+  <tr><td>Stage 3</td><td>Full-stack (Next.js + Supabase + AI feature)</td><td>40 hrs</td></tr>
+  <tr><td><strong>Total</strong></td><td></td><td><strong>~64 hrs</strong></td></tr>
+</table>
+
+<h3 class="subsection">Value Delivered to SliceMatic</h3>
+<table>
+  <tr><th>Value Area</th><th>Before (Phone)</th><th>After (Digital)</th><th>Measurable Gain</th></tr>
+  <tr><td>Order accuracy</td><td>~85% (phone errors)</td><td>~99% (validated input)</td><td>Eliminates ~15% remakes</td></tr>
+  <tr><td>Order intake speed</td><td>3–5 min/call</td><td>90 sec self-service</td><td>2–3× throughput</td></tr>
+  <tr><td>Order data</td><td>None</td><td>Full structured log</td><td>Enables BI + forecasting</td></tr>
+  <tr><td>Staff load</td><td>1 FTE on phone</td><td>Counter staff freed</td><td>Partial FTE redeployed</td></tr>
+  <tr><td>GST compliance</td><td>Manual, error-prone</td><td>Auto-calculated + logged</td><td>Reduces compliance risk</td></tr>
+</table>
+
+<div class="highlight-box green">
+  <strong>ROI:</strong> Development cost ~Rs.51,200 (64 hrs × Rs.800/hr). At 47 orders/day, a 1–2% error reduction saves Rs.11,000–21,000/month. <strong>Payback: under 3 months.</strong>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ PART B ═══ -->
+<div class="part-header">
+  <div class="part-label">Part B</div>
+  <h2>Business Unit Economics</h2>
+  <p>Financial model for SliceMatic — FY 2024–25 baseline with sensitivity analysis</p>
+</div>
+
+<!-- Key Metrics -->
+<div class="metrics-grid">
+  <div class="metric-card"><div class="mval">Rs.847</div><div class="mlabel">Avg Order Value</div></div>
+  <div class="metric-card"><div class="mval">Rs.2.1L</div><div class="mlabel">Monthly Revenue (60%)</div></div>
+  <div class="metric-card"><div class="mval">38.4%</div><div class="mlabel">Gross Margin</div></div>
+  <div class="metric-card"><div class="mval">11/day</div><div class="mlabel">Break-Even Orders</div></div>
+</div>
+
+<!-- Fixed Costs -->
+<h2 class="section">1. Monthly Fixed Costs</h2>
+<table>
+  <tr><th>Cost Item</th><th>Detail</th><th style="text-align:right">Monthly (Rs.)</th></tr>
+  <tr><td>Kitchen rent</td><td>1,200 sq ft commercial lease, New Ashok Nagar</td><td style="text-align:right">55,000</td></tr>
+  <tr><td>Equipment EMI</td><td>Pizza oven (2 deck), dough mixer, refrigeration — 36-month loan</td><td style="text-align:right">14,500</td></tr>
+  <tr><td>Electricity</td><td>Commercial rate; ~1,800 units/month</td><td style="text-align:right">12,600</td></tr>
+  <tr><td>Gas / LPG</td><td>3 commercial cylinders @ Rs.1,850 each</td><td style="text-align:right">5,550</td></tr>
+  <tr><td>Head Chef</td><td>Fixed monthly salary</td><td style="text-align:right">28,000</td></tr>
+  <tr><td>Kitchen helper</td><td>Minimum wage + ESI/PF</td><td style="text-align:right">16,500</td></tr>
+  <tr><td>Counter + billing staff</td><td>Order management + cash</td><td style="text-align:right">18,000</td></tr>
+  <tr><td>Delivery riders</td><td>2 riders — fixed + incentive + fuel allowance</td><td style="text-align:right">32,000</td></tr>
+  <tr><td>Internet + POS + SaaS</td><td>Broadband + POS software + payment gateway amortised</td><td style="text-align:right">2,800</td></tr>
+  <tr><td>Marketing (fixed)</td><td>Meta Ads, pamphlets, Google Business</td><td style="text-align:right">8,000</td></tr>
+  <tr><td>Packaging (fixed)</td><td>Branded boxes, bags, stickers — minimum monthly order</td><td style="text-align:right">4,200</td></tr>
+  <tr><td>Misc / contingency (3%)</td><td>Maintenance, repairs, consumables</td><td style="text-align:right">5,760</td></tr>
+  <tr><td><strong>TOTAL FIXED COSTS</strong></td><td></td><td style="text-align:right"><strong>2,02,910</strong></td></tr>
+</table>
+
+<!-- COGS -->
+<h2 class="section">2. COGS per Pizza — Ingredient Breakdown</h2>
+<table>
+  <tr><th>Component</th><th>Margherita (Thin)</th><th>Farm House (Thick)</th><th>Cheese Burst</th><th>Avg Across Menu</th></tr>
+  <tr><td>Pizza base ingredients</td><td>Rs.38</td><td>Rs.45</td><td>Rs.72</td><td>Rs.52</td></tr>
+  <tr><td>Sauce + seasoning</td><td>Rs.12</td><td>Rs.14</td><td>Rs.14</td><td>Rs.13</td></tr>
+  <tr><td>Cheese (mozzarella)</td><td>Rs.28</td><td>Rs.32</td><td>Rs.65</td><td>Rs.38</td></tr>
+  <tr><td>Pizza-specific toppings</td><td>Rs.8</td><td>Rs.22</td><td>Rs.18</td><td>Rs.17</td></tr>
+  <tr><td>Add-on topping (avg 1)</td><td>Rs.10</td><td>Rs.10</td><td>Rs.10</td><td>Rs.10</td></tr>
+  <tr><td>Packaging (box + bag)</td><td>Rs.18</td><td>Rs.18</td><td>Rs.18</td><td>Rs.18</td></tr>
+  <tr><td>Delivery variable cost</td><td>Rs.22</td><td>Rs.22</td><td>Rs.22</td><td>Rs.22</td></tr>
+  <tr><td><strong>Total COGS / pizza</strong></td><td><strong>Rs.136</strong></td><td><strong>Rs.163</strong></td><td><strong>Rs.219</strong></td><td><strong>Rs.170</strong></td></tr>
+  <tr><td>Selling price (avg)</td><td>Rs.397</td><td>Rs.417</td><td>Rs.447</td><td>Rs.420</td></tr>
+  <tr><td><strong>Gross Margin</strong></td><td><strong>Rs.261 (65.7%)</strong></td><td><strong>Rs.254 (60.9%)</strong></td><td><strong>Rs.228 (51%)</strong></td><td><strong>Rs.250 (59.5%)</strong></td></tr>
+</table>
+
+<!-- Revenue Model -->
+<h2 class="section">3. Revenue Model — Monthly Projections</h2>
+<table>
+  <tr><th>Metric</th><th>Weekday</th><th>Weekend / Holiday</th><th>Monthly Total</th></tr>
+  <tr><td>Days in period</td><td>22 days</td><td>8 days</td><td>30 days</td></tr>
+  <tr><td>Orders per day (60% capacity)</td><td>38 orders</td><td>68 orders</td><td>~47 avg</td></tr>
+  <tr><td>Average order value (AOV)</td><td>Rs.792</td><td>Rs.940</td><td><strong>Rs.847</strong></td></tr>
+  <tr><td>Daily revenue</td><td>Rs.30,096</td><td>Rs.63,920</td><td>~Rs.40,500 avg</td></tr>
+  <tr><td>Monthly gross revenue (incl. GST)</td><td>Rs.6,62,112</td><td>Rs.5,11,360</td><td><strong>Rs.11,73,472</strong></td></tr>
+  <tr><td>GST collected (passed to Govt.)</td><td>—</td><td>—</td><td>Rs.1,77,564</td></tr>
+  <tr><td><strong>Net revenue (ex-GST)</strong></td><td>—</td><td>—</td><td><strong>Rs.9,95,908</strong></td></tr>
+</table>
+
+<!-- Contribution Margin -->
+<h2 class="section">4. Contribution Margin Analysis</h2>
+<table>
+  <tr><th>P&amp;L Line Item</th><th style="text-align:right">Per Order (Rs.)</th><th style="text-align:right">Monthly @ 60% Cap (Rs.)</th></tr>
+  <tr><td>Revenue (ex-GST)</td><td style="text-align:right">847</td><td style="text-align:right">11,88,996</td></tr>
+  <tr><td>Less: Ingredient COGS</td><td style="text-align:right">(148)</td><td style="text-align:right">(2,07,768)</td></tr>
+  <tr><td>Less: Packaging (variable)</td><td style="text-align:right">(18)</td><td style="text-align:right">(25,272)</td></tr>
+  <tr><td>Less: Delivery variable (rider incentive)</td><td style="text-align:right">(22)</td><td style="text-align:right">(30,888)</td></tr>
+  <tr><td>Less: Payment gateway fee (1.8% GMV)</td><td style="text-align:right">(15)</td><td style="text-align:right">(21,402)</td></tr>
+  <tr><td><strong>Contribution Margin</strong></td><td style="text-align:right"><strong>644 (76%)</strong></td><td style="text-align:right"><strong>9,03,666</strong></td></tr>
+  <tr><td>Less: Total Fixed Costs</td><td style="text-align:right">—</td><td style="text-align:right">(2,02,910)</td></tr>
+  <tr><td><strong>Operating Profit (EBITDA)</strong></td><td style="text-align:right">—</td><td style="text-align:right"><strong>7,00,756</strong></td></tr>
+  <tr><td><strong>Operating Margin</strong></td><td style="text-align:right">—</td><td style="text-align:right"><strong>58.9%</strong></td></tr>
+</table>
+
+<!-- Break-Even -->
+<h2 class="section">5. Break-Even Analysis</h2>
+<table>
+  <tr><th>Fixed Costs / Month</th><th>Contribution Margin / Order</th><th>Break-Even / Month</th><th>Break-Even / Day</th></tr>
+  <tr><td>Rs.2,02,910</td><td>Rs.644</td><td>315 orders</td><td><strong class="td-highlight">11 orders/day</strong></td></tr>
+</table>
+<div class="highlight-box green">
+  At 60% capacity (47 orders/day), SliceMatic operates at <strong>4.3× break-even</strong>. The outlet becomes unprofitable only if daily orders fall below 11 — a 76% drop from the 60% capacity plan.
+</div>
+
+<h3 class="subsection">Sensitivity Analysis — Required Challenge Questions</h3>
+
+<div class="qa-block">
+  <div class="qa-q">Q1: Break-even if rent increases to Rs.70,000/month?</div>
+  <div class="qa-a">New fixed costs = Rs.2,17,910. New break-even = 338/month = <strong>11.3 orders/day</strong> — negligible impact. Model becomes economically strained only if rent exceeds ~Rs.5.75L/month, far above any realistic New Ashok Nagar market rate.</div>
+</div>
+
+<div class="qa-block">
+  <div class="qa-q">Q2: Impact of 40% orders via Zomato/Swiggy at 25% commission?</div>
+  <div class="qa-a">Aggregator commission: Rs.211.75/order. Aggregator contribution margin: Rs.432.25. Blended margin (60% direct + 40% aggregator): <strong>Rs.559.3/order</strong>. New break-even: <strong>12.1 orders/day</strong>. Recommendation: cap aggregator channel at 40% to protect margins.</div>
+</div>
+
+<div class="qa-block">
+  <div class="qa-q">Q3: At what volume does hiring a 3rd rider become justified?</div>
+  <div class="qa-a">Operationally required above <strong>55 orders/day</strong> (2 riders saturate at ~60–70 trips/day). Financially: incremental revenue = Rs.1,54,560/month vs. Rs.16,000 rider cost — clearly justified at 55+ orders/day.</div>
+</div>
+
+<div class="qa-block">
+  <div class="qa-q">Q4: Is the 10% discount (qty >= 5) a value-driver or margin leak?</div>
+  <div class="qa-a">Contribution margin drops from 76.1% to 73.4% on a 5-pizza order (lost Rs.423.50). <strong>Verdict: Value-driver.</strong> Higher-volume orders reduce per-pizza delivery cost, improve kitchen batch efficiency, and deliver a higher absolute contribution per session (Rs.2,796.50 vs Rs.644 for a single-pizza order).</div>
+</div>
+
+<div class="qa-block">
+  <div class="qa-q">Q5: COGS +12% inflation — additional orders needed to maintain EBITDA?</div>
+  <div class="qa-a">Ingredient COGS rises Rs.17.76/order. New contribution margin: Rs.626.24. Monthly shortfall: Rs.25,042. Additional orders needed: <strong>~40/month (1.3/day)</strong>. The model is resilient — a 12% COGS increase requires only ~3% more volume.</div>
+</div>
+
+<div class="qa-block">
+  <div class="qa-q">Q6: Three BI metrics from order log that directly improve profitability</div>
+  <div class="qa-a">
+    <strong>1. Peak-hour demand heatmap</strong> → optimize rider scheduling, reduce idle labour (save Rs.8–12K/month)<br>
+    <strong>2. Top pizza × topping combos by margin</strong> → curate high-margin bundles and promotional offers (+3–5% AOV)<br>
+    <strong>3. Discount order frequency as % of total</strong> → detect threshold gaming, calibrate discount policy
+  </div>
+</div>
+
+<!-- Delivery Radius -->
+<h2 class="section">6. Delivery Radius Economics</h2>
+<table>
+  <tr><th>Radius</th><th>Population Served</th><th>Avg Delivery Time</th><th>Rider Trips/Day</th><th>Viable?</th></tr>
+  <tr><td>0–2 km</td><td>~18,000 households</td><td>8–12 min</td><td>55–60/rider</td><td>Yes — premium SLA</td></tr>
+  <tr><td>2–4 km</td><td>~55,000 households</td><td>15–22 min</td><td>30–35/rider</td><td><strong>Yes — sweet spot</strong></td></tr>
+  <tr><td>4–6 km</td><td>~1,10,000 households</td><td>25–40 min</td><td>18–22/rider</td><td>Marginal — 3rd rider needed</td></tr>
+  <tr><td>&gt; 6 km</td><td>Large but diminishing</td><td>40+ min</td><td>12–15/rider</td><td>Not viable at launch</td></tr>
+</table>
+<div class="highlight-box">
+  <strong>Recommendation:</strong> Launch with 4 km radius. Expand to 5 km after adding a 3rd rider, justified at 55+ orders/day.
+</div>
+
+<!-- GST -->
+<h2 class="section">7. GST Treatment</h2>
+<p>Pizza home delivery attracts <strong>18% GST</strong> in India (home delivery without composition scheme). SliceMatic is GST-registered.</p>
+<ul>
+  <li><strong>GST is charged to the customer</strong> — collected on behalf of the government, not revenue</li>
+  <li><strong>P&amp;L computed on ex-GST amounts</strong> — GST collected is a government liability</li>
+  <li><strong>Input Tax Credit (ITC)</strong> — SliceMatic claims ITC on GST paid on ingredients, packaging, equipment. Estimated benefit: Rs.18,000–22,000/month</li>
+  <li><strong>Effective GST liability:</strong> Output ~Rs.1,77,564 minus ITC ~Rs.20,000 = <strong>net Rs.1,57,564/month payable</strong></li>
+  <li><strong>In ordering system:</strong> prices displayed ex-GST; GST added at bill stage on post-discount subtotal</li>
+</ul>
+
+<div style="display:flex; gap:30px; align-items:flex-start; margin-top:16px">
+<div class="bill-box">
+  <div class="bill-header">SliceMatic · Sample Bill</div>
+  <div class="bill-row"><span>Base: Cheese Burst</span><span>Rs.229</span></div>
+  <div class="bill-row"><span>Pizza: BBQ Chicken</span><span>Rs.379</span></div>
+  <div class="bill-row"><span>Topping: Extra Cheese</span><span>Rs.69</span></div>
+  <div class="bill-row"><span>Unit Subtotal</span><span>Rs.677</span></div>
+  <div class="bill-row"><span>Qty: 5 × Rs.677</span><span>Rs.3,385</span></div>
+  <div class="bill-row discount"><span>Discount 10% (qty≥5)</span><span>-Rs.338.50</span></div>
+  <div class="bill-row"><span>Post-discount Subtotal</span><span>Rs.3,046.50</span></div>
+  <div class="bill-row gst"><span>GST @ 18%</span><span>Rs.548.37</span></div>
+  <div class="bill-row total"><span>TOTAL PAYABLE</span><span>Rs.3,594.87</span></div>
+</div>
+</div>
+
+<!-- 18-Month P&L -->
+<h2 class="section">8. 18-Month P&amp;L Projection — Ramp-Up to Maturity</h2>
+<table>
+  <tr><th>Month</th><th>Capacity</th><th>Avg Orders/Day</th><th>Gross Rev (Rs.L)</th><th>Variable Costs</th><th>Fixed Costs</th><th>EBITDA</th><th>Cumulative</th></tr>
+  <tr><td>M1 — Apr 25</td><td>20%</td><td>16</td><td>3.93</td><td>(0.99)</td><td>(2.03)</td><td>0.91</td><td>–14.12</td></tr>
+  <tr><td>M2 — May 25</td><td>28%</td><td>22</td><td>5.56</td><td>(1.37)</td><td>(2.03)</td><td>2.16</td><td>–11.96</td></tr>
+  <tr><td>M3 — Jun 25</td><td>35%</td><td>28</td><td>7.10</td><td>(1.78)</td><td>(2.03)</td><td>3.29</td><td>–8.67</td></tr>
+  <tr><td>M4 — Jul 25</td><td>45%</td><td>36</td><td>9.17</td><td>(2.31)</td><td>(2.09)</td><td>4.77</td><td>–3.90</td></tr>
+  <tr style="background:#e8fff0"><td><strong>M5 — Aug 25 ★</strong></td><td><strong>52%</strong></td><td><strong>41</strong></td><td><strong>10.44</strong></td><td><strong>(2.62)</strong></td><td><strong>(2.09)</strong></td><td><strong>5.73</strong></td><td><strong>+1.83</strong></td></tr>
+  <tr><td>M6 — Sep 25</td><td>58%</td><td>46</td><td>11.68</td><td>(2.94)</td><td>(2.09)</td><td>6.65</td><td>+8.48</td></tr>
+  <tr><td>M7–12 avg</td><td>65%</td><td>52</td><td>13.22</td><td>(3.32)</td><td>(2.15)</td><td>7.75</td><td>+55.0</td></tr>
+  <tr><td>M13–18 avg</td><td>72%</td><td>57</td><td>14.47</td><td>(3.64)</td><td>(2.25)</td><td>8.58</td><td>+1,06.5</td></tr>
+  <tr><td colspan="7"><strong>Payback (Rs.15L initial investment)</strong></td><td><strong>~Month 18</strong></td></tr>
+</table>
+<p style="font-size:8pt; color:#666">★ First profitable month. Initial investment: Rs.15L (equipment Rs.4.5L + fit-out Rs.4L + working capital Rs.2.5L + contingency Rs.4L)</p>
+
+<div class="page-footer">
+  PizzaFlow — SliceMatic PRD + Business Unit Economics &nbsp;·&nbsp; FDE Academy · Cohort 1 &nbsp;·&nbsp; Stage 1 Submission &nbsp;·&nbsp; June 25, 2025<br>
+  Group 10
+</div>
+</div>
+
+</body>
+</html>
